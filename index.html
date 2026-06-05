@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nick Waller — IT Executive Portfolio</title>
-<meta name="description" content="Director of IT Management | Global IT Leadership | Platform Delivery | Data Infrastructure">
+<meta name="description" content="Director of IT Management | Global IT Leadership | Platform Delivery | Data Infrastructure | Technical Program Management">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -53,7 +53,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .hero-sub{font-size:16px;color:var(--text-2);font-weight:300;max-width:560px;line-height:1.7;margin-bottom:24px;}
 .hero-location{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);margin-bottom:28px;letter-spacing:0.04em;}
 .hero-location span{color:var(--accent);}
-
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;}
 .tag{font-family:'DM Mono',monospace;font-size:11px;padding:5px 12px;border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);color:var(--text-2);letter-spacing:0.04em;}
@@ -147,6 +146,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .case-tag.tag-gold{background:var(--accent-dim);color:var(--accent);}
 .case-tag.tag-blue{background:var(--accent-2-dim);color:var(--accent-2);}
 .case-tag.tag-green{background:var(--green-dim);color:var(--green);}
+.case-tag.tag-coral{background:var(--coral-dim);color:var(--coral);}
 .par-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .par-block{}
 .par-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;padding-bottom:6px;border-bottom:0.5px solid var(--border);}
@@ -190,14 +190,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .tool-group-name{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;padding-bottom:8px;border-bottom:0.5px solid var(--border);}
 .tool-list{font-size:12px;color:var(--text-2);line-height:1.9;}
 
-/* DOMAIN GRID */
-.domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.domain-card{background:var(--bg-2);border:0.5px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:border-color 0.25s,background 0.25s;}
-.domain-card:hover{border-color:rgba(240,184,74,0.30);background:var(--bg-3);}
-.domain-icon{font-size:18px;margin-bottom:10px;color:var(--accent);opacity:0.75;}
-.domain-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;}
-.domain-items{font-size:12px;color:var(--text-2);line-height:1.9;}
-
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.18s;border:none;}
 .btn-outline{background:transparent;border:0.5px solid var(--border-mid);color:var(--text-2);}
@@ -211,7 +203,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .cta-section{background:var(--bg-2);border:0.5px solid var(--border);border-radius:var(--radius);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
 .cta-heading{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:6px;}
 .cta-sub{font-size:13px;color:var(--text-2);margin-bottom:16px;}
-.cta-right{display:flex;gap:12px;flex-shrink:0;}
 
 /* FOOTER */
 footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;margin-top:64px;}
@@ -244,9 +235,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
   .par-row{grid-template-columns:1fr;}
   .role-grid{grid-template-columns:1fr;}
   .tools-grid{grid-template-columns:1fr;}
-  .domain-grid{grid-template-columns:1fr 1fr;}
   .cta-section{flex-direction:column;align-items:flex-start;gap:20px;}
-  .cta-right{flex-direction:column;width:100%;}
   .btn{justify-content:center;}
   footer{flex-direction:column;gap:16px;text-align:center;}
 }
@@ -273,10 +262,10 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-eyebrow">IT Executive · Director, IT Management</div>
+    <div class="hero-eyebrow">IT Executive · Director, IT Management · Senior Technical Program Manager</div>
     <h1 class="hero-name">Nick <em>Waller</em></h1>
-    <p class="hero-sub">Building and scaling global IT organizations at the intersection of enterprise platform delivery, data infrastructure, and operational excellence.</p>
-    <p class="hero-location">Based in Henderson, NV &nbsp;·&nbsp; <span>Open to Remote / Hybrid / On-site</span> &nbsp;·&nbsp; Targeting relocation to Denver, CO</p>
+    <p class="hero-sub">Building and scaling global IT organizations at the intersection of enterprise platform delivery, technical program management, data infrastructure, and operational excellence.</p>
+    <p class="hero-location">Based in Henderson, NV &nbsp;·&nbsp; <span>Open to Remote / Hybrid / On-site</span> &nbsp;·&nbsp; Targeting relocation to Denver, CO or Washington State</p>
     <div class="hero-cta">
       <a href="Nick-Waller-Resume.pdf" download class="btn btn-download">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -293,27 +282,29 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     </div>
     <div class="hero-tags">
       <span class="tag">Global IT Leadership</span>
+      <span class="tag">Technical Program Management</span>
       <span class="tag">Platform Delivery</span>
       <span class="tag">Data Infrastructure</span>
       <span class="tag">Org Design</span>
       <span class="tag">PCI-DSS · SOC 2 · AML</span>
       <span class="tag">Enterprise Applications</span>
       <span class="tag">Data Center Operations</span>
+      <span class="tag">Release Governance</span>
       <span class="tag">Change Management</span>
     </div>
     <div class="hero-divider"></div>
     <div class="stat-row">
       <div class="stat-cell">
-        <div class="stat-num">35<span>–</span>40</div>
-        <div class="stat-label">global org headcount</div>
+        <div class="stat-num">20<span>+</span></div>
+        <div class="stat-label">enterprise customers managed concurrently</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">15</div>
-        <div class="stat-label">direct reports</div>
+        <div class="stat-label">direct reports across global regions</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">15<span>+</span></div>
-        <div class="stat-label">global project deployments</div>
+        <div class="stat-label">global platform deployments delivered</div>
       </div>
       <div class="stat-cell">
         <div class="stat-num">6<span>+</span></div>
@@ -332,7 +323,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       <div class="kpi-card">
         <div class="kpi-val">35+</div>
         <div class="kpi-sub">IT professionals across global regions</div>
-        <div class="kpi-badge">↑ from ~10 at hire</div>
+        <div class="kpi-badge">from ~10 at hire</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-val">75%+</div>
@@ -372,6 +363,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     </div>
     <div class="case-grid">
 
+      <!-- CASE 1: Release Governance -->
       <div class="case-card">
         <div class="case-header">
           <div class="case-title">Global Release Governance Platform</div>
@@ -380,19 +372,20 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div class="par-row">
           <div class="par-block">
             <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">10+ active code branches across customer environments with no consistent release visibility. Deployment risk was high and production readiness reviews were ad hoc, leading to inconsistent outcomes across global properties.</div>
+            <div class="par-text">Managing a loyalty solution across 20+ enterprise customers — each with Lab, PreProd, and Production environments — plus internal QA, Showroom, regulatory test beds, and 5 tradeshow environments created an unmanageable release coordination problem. No unified visibility into what was in each release, which tickets were patched, or which components required regulatory sign-off with GLI or BMM.</div>
           </div>
           <div class="par-block">
             <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Designed and implemented a release tracking and governance process covering branch management, stakeholder communication, environment readiness criteria, and structured go/no-go checkpoints before each customer deployment.</div>
+            <div class="par-text">Designed and implemented a custom release management platform to track all code branches, associated database objects, patched tickets, and deployment status across every environment simultaneously. Built GLI regulatory flagging directly into the release workflow. Managed the full program portfolio in ClickUp as a certified Power User, with dedicated spaces per customer property tracking go-lives, upgrades, and installs.</div>
           </div>
           <div class="par-block">
             <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Improved release traceability across all customer environments, reduced deployment risk, and established a repeatable production readiness standard that could scale with the portfolio of global properties.</div>
+            <div class="par-text">Established a single source of truth for release state across 20+ customers and dozens of environments. Deployment risk dropped significantly, regulatory compliance checkpoints were systematically enforced, and the platform scaled to support all subsequent customer onboardings without additional process overhead.</div>
           </div>
         </div>
       </div>
 
+      <!-- CASE 2: Support Transformation -->
       <div class="case-card">
         <div class="case-header">
           <div class="case-title">Enterprise Support Transformation</div>
@@ -401,19 +394,86 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div class="par-row">
           <div class="par-block">
             <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">Ticket response times were inconsistent and SLA accountability was unclear across a globally distributed support function. Escalation paths were informal and resolution metrics were not visible to leadership.</div>
+            <div class="par-text">Ticket response times were inconsistent and SLA accountability was unclear across a globally distributed support function spanning 13 casino properties, 25 hotels, and 180+ locations. Escalation paths were informal and resolution metrics were not visible to leadership.</div>
           </div>
           <div class="par-block">
             <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Built SLA governance framework, deployed ServiceNow dashboards for real-time visibility, formalized escalation workflows, and established ownership accountability at the manager level across regions.</div>
+            <div class="par-text">Built SLA governance framework, deployed ServiceNow dashboards for real-time visibility, formalized escalation workflows, and established ownership accountability at the manager level across all regions and properties.</div>
           </div>
           <div class="par-block">
             <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Achieved an 80% improvement in response and resolution times within 60 days. Leadership gained live operational visibility and managers had clear accountability structures for the first time.</div>
+            <div class="par-text">Achieved an 80% improvement in response and resolution times within 60 days. Leadership gained live operational visibility and managers had clear accountability structures for the first time across the enterprise portfolio.</div>
           </div>
         </div>
       </div>
 
+      <!-- CASE 3: Multi-property Gaming Platform Rollout -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-title">Enterprise Gaming Platform Upgrade Program</div>
+          <div class="case-tag tag-gold">Seminole Hard Rock Support Services</div>
+        </div>
+        <div class="par-row">
+          <div class="par-block">
+            <div class="par-label lbl-problem">Problem</div>
+            <div class="par-text">Upgrading gaming applications across 13 casino properties simultaneously carried significant risk — adverse effects to the gaming floor or system outages translated directly to revenue loss. A failed upgrade with no recovery path was not an acceptable outcome in a 24/7 regulated environment.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-action">Action</div>
+            <div class="par-text">Designed a phased rollout program using the 6 Florida properties as a controlled pilot group — geographically concentrated for rapid on-site support if needed. After all 6 properties signed off, the enterprise rollout was scheduled across all remaining properties in coordination with their Gaming Systems teams. Built rigorous rollback procedures into every upgrade, including both database and binary folder backups for each affected application prior to any production deployment. All changes were vigorously validated in QA before promotion to production.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-result">Result</div>
+            <div class="par-text">Delivered enterprise-wide gaming platform upgrades across all 13 properties with zero unplanned outages. The phased pilot model became the standard upgrade methodology, giving stakeholders confidence in the process and providing a proven rollback path that protected revenue and regulatory continuity at every property.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 4: Player Database Migration Tooling -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-title">Player Database Pre-Migration Validation Tool</div>
+          <div class="case-tag tag-blue">Light &amp; Wonder</div>
+        </div>
+        <div class="par-row">
+          <div class="par-block">
+            <div class="par-label lbl-problem">Problem</div>
+            <div class="par-text">Legacy casino player management systems accumulated years of unvalidated "dirty data" — free-text fields where users had entered values like invalid state names, malformed phone numbers, and non-standard addresses. These failures were not discovered until migration was underway, causing go-live delays, failed records, and costly rework across every customer onboarding.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-action">Action</div>
+            <div class="par-text">Led the design and development of a pre-migration data comparison tool that analyzed all distinct field values in the source database against valid mapped values in the target system. The tool generated an Excel output flagging every unique value with no valid mapping — giving the team and the customer a complete data quality picture before a single record was touched. Customers were presented three options: remediate the data themselves, have the team remediate it, or accept failures for records deemed non-critical.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-result">Result</div>
+            <div class="par-text">Transformed data migration from a reactive, failure-driven process into a structured, customer-facing data quality program. Go-live risk dropped significantly, customer expectations were properly set before migration began, and the tool became standard pre-migration practice across all subsequent platform deployments in the customer portfolio.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 5: IPTV / OpEx Reduction -->
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-title">IPTV Platform Migration and OpEx Reduction</div>
+          <div class="case-tag tag-green">Hard Rock Sacramento</div>
+        </div>
+        <div class="par-row">
+          <div class="par-block">
+            <div class="par-label lbl-problem">Problem</div>
+            <div class="par-text">The property launched with a commercial IPTV and video matrix solution requiring a dedicated set-top box on every screen. With hundreds of screens across the property, hardware replacement costs of approximately $600 per unit combined with expensive per-unit annual licensing made the solution financially unsustainable as an ongoing operational expense.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-action">Action</div>
+            <div class="par-text">Evaluated the existing solution against alternatives and proposed migrating to TriplePlay TV — a software-based IPTV platform that eliminated the set-top box requirement entirely by leveraging the onboard chipset built into the property's existing Samsung commercial displays. Managed the full vendor transition, negotiated a new MSA with significantly reduced per-unit licensing terms, and oversaw deployment across all screens property-wide.</div>
+          </div>
+          <div class="par-block">
+            <div class="par-label lbl-result">Result</div>
+            <div class="par-text">Eliminated ongoing hardware replacement costs and reduced per-unit licensing spend across hundreds of screens, contributing directly to reducing property OpEx from $2.5M to $1.8M. The property gained expanded marketing content customization capabilities and removed the hardware dependency that had constrained the original solution.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE 6: Greenfield Buildout -->
       <div class="case-card">
         <div class="case-header">
           <div class="case-title">Greenfield Resort Technology Buildout</div>
@@ -426,11 +486,11 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
           </div>
           <div class="par-block">
             <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Led end-to-end infrastructure delivery: MDF/IDF design, network architecture, server and storage provisioning, endpoint deployment, AV systems programming, and vendor coordination across all technology domains. Managed production readiness and go-live sequencing.</div>
+            <div class="par-text">Led end-to-end infrastructure delivery: MDF/IDF design, network architecture, server and storage provisioning, endpoint deployment, AV systems programming, and vendor coordination across all technology domains. Managed production readiness and go-live sequencing across the casino floor, hotel tower, Hard Rock Live concert venue, and Rocktane gas station with integrated loyalty payment systems.</div>
           </div>
           <div class="par-block">
             <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Delivered the full technology buildout in six months, on time and within scope. The execution model became the franchise template for subsequent Hard Rock property openings, extending the impact across the brand.</div>
+            <div class="par-text">Delivered the full technology buildout in six months, on time and within scope. The execution model became the franchise template for subsequent Hard Rock property openings, extending the impact beyond the single property across the brand.</div>
           </div>
         </div>
       </div>
@@ -483,6 +543,10 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       <div class="panel">
         <div class="panel-title">Domain depth</div>
         <div class="bar-row">
+          <div class="bar-meta"><span class="bar-name">Technical program management</span><span class="bar-pct">90%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%;background:#5ba3e8;"></div></div>
+        </div>
+        <div class="bar-row">
           <div class="bar-meta"><span class="bar-name">Platform delivery</span><span class="bar-pct">90%</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:90%;background:#5ba3e8;"></div></div>
         </div>
@@ -514,7 +578,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     </div>
     <ul class="timeline">
       <li class="tl-item">
-        <div class="tl-years">Most Recent<br>Henderson, NV</div>
+        <div class="tl-years">2023–2026<br>Henderson, NV</div>
         <div class="tl-spine">
           <div class="tl-dot" style="background:#5ba3e8;border-color:var(--bg);"></div>
           <div class="tl-line-seg"></div>
@@ -522,11 +586,23 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div>
           <div class="tl-company">Light &amp; Wonder, Inc.</div>
           <div class="tl-role">Director, IT Management</div>
-          <div class="tl-body">Global IT organization of 35–40 with 15 direct reports spanning regional, technical services, and project management functions. Built enterprise data platform supporting loyalty engagement, business analytics, and API integrations across an international property portfolio. Named deployments include NagaWorld, Okada, SkyCity, Sun International, Hard Rock, Fortune Casino, and Casino Miami.</div>
+          <div class="tl-body">Managed enterprise loyalty solution delivery across 20+ unique customers, some multi-site, with concurrent program oversight across Lab, PreProd, and Production environments per customer — plus internal QA, Showroom, GLI/BMM regulatory test beds, and 5 tradeshow environments. Led a global IT organization of 35–40 with 15 direct reports. ClickUp Certified Power User (top 10%). Named customer deployments include NagaWorld, Okada, SkyCity, Sun International, Hard Rock, Fortune Casino, and Casino Miami.</div>
         </div>
       </li>
       <li class="tl-item">
-        <div class="tl-years">Prior<br>Sacramento, CA</div>
+        <div class="tl-years">2022–2023<br>Davie, FL</div>
+        <div class="tl-spine">
+          <div class="tl-dot" style="background:#f0b84a;border-color:var(--bg);"></div>
+          <div class="tl-line-seg"></div>
+        </div>
+        <div>
+          <div class="tl-company">Seminole Hard Rock Support Services</div>
+          <div class="tl-role">IT Manager, Gaming &amp; Loyalty Applications</div>
+          <div class="tl-body">Directed enterprise gaming and loyalty application operations across 13 casino properties, 25 hotels, and 180+ locations. Built phased gaming platform upgrade methodology using Florida properties as a controlled pilot. Improved ticket resolution times by 80% within 60 days. Led systems integration for The Mirage acquisition.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-years">2019–2022<br>Wheatland, CA</div>
         <div class="tl-spine">
           <div class="tl-dot" style="background:#52cc8a;border-color:var(--bg);"></div>
           <div class="tl-line-seg"></div>
@@ -534,17 +610,17 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div>
           <div class="tl-company">Hard Rock Hotel &amp; Casino Sacramento</div>
           <div class="tl-role">IT Operations Manager / Senior Systems Administrator</div>
-          <div class="tl-body">Delivered a greenfield 300,000 sq ft casino technology buildout from the ground up in six months — the result became the franchise template for future Hard Rock property openings. Negotiated dual-carrier fiber infrastructure to eliminate single points of failure. Managed full-stack IT delivery from infrastructure through guest experience systems.</div>
+          <div class="tl-body">Delivered a greenfield 300,000 sq ft casino technology buildout from the ground up in six months — the execution model became the franchise template for future Hard Rock property openings. Reduced OpEx from $2.5M to $1.8M through vendor optimization including IPTV platform migration to TriplePlay TV. Negotiated dual-carrier fiber infrastructure to eliminate single points of failure.</div>
         </div>
       </li>
       <li class="tl-item">
-        <div class="tl-years">Earlier</div>
+        <div class="tl-years">2017–2019<br>Las Vegas, NV</div>
         <div class="tl-spine">
           <div class="tl-dot" style="background:#e8704e;border-color:var(--bg);"></div>
           <div class="tl-line-seg"></div>
         </div>
         <div>
-          <div class="tl-company">DRock Gaming</div>
+          <div class="tl-company">DRock Gaming / The D Las Vegas</div>
           <div class="tl-role">Systems Administrator / A/V Systems Programmer</div>
           <div class="tl-body">Hands-on enterprise infrastructure: Nutanix HCI, ExaGrid backup, Windows Hyper-V, Dell PowerEdge servers, Dell EMC Unity, and ManageEngine. Established the technical foundation that preceded executive-level responsibilities at Hard Rock.</div>
         </div>
@@ -579,7 +655,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       <div class="sig-card accent-blue">
         <div class="sig-title">Role-permission onboarding matrix</div>
         <div class="sig-ctx">Light &amp; Wonder · org design initiative</div>
-        <div class="sig-body">Mapped 120 job types across a global organization into a structured access provisioning framework. Eliminated ad-hoc entitlement decisions and reduced provisioning time by over 75%, with compliance-readiness benefits that extended into audit and governance posture.</div>
+        <div class="sig-body">Mapped 120 job types across a global organization into a structured access provisioning framework. Eliminated ad-hoc entitlement decisions and reduced provisioning time by over 75%, with compliance-readiness benefits extending into audit and governance posture.</div>
         <div class="sig-metric">120 job types · 75%+ provisioning time reduction</div>
       </div>
       <div class="sig-card accent-green">
@@ -589,10 +665,10 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div class="sig-metric">Dual-carrier resilience · revenue protection</div>
       </div>
       <div class="sig-card accent-coral">
-        <div class="sig-title">Global delivery org scale-up</div>
-        <div class="sig-ctx">Light &amp; Wonder · team building &amp; org design</div>
-        <div class="sig-body">Grew and structured a globally distributed IT delivery organization to 35–40 professionals across regions. Built out hiring pipelines, performance frameworks, and project utilization models that enabled consistent delivery across simultaneous international deployments.</div>
-        <div class="sig-metric">15+ concurrent global deployments</div>
+        <div class="sig-title">20+ customer program portfolio management</div>
+        <div class="sig-ctx">Light &amp; Wonder · program delivery at scale</div>
+        <div class="sig-body">Concurrently managed enterprise loyalty solution delivery across 20+ unique customers with Lab, PreProd, and Production environments per customer, plus internal regulatory test beds and tradeshow environments. Delivered using ClickUp (Certified Power User, top 10%) and a custom-built release management platform as the operational backbone.</div>
+        <div class="sig-metric">20+ customers · concurrent program management</div>
       </div>
     </div>
   </section>
@@ -612,18 +688,18 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div class="role-desc">IT strategy, operations, service delivery, vendor management, budget ownership, compliance governance, and executive stakeholder alignment across global or enterprise-scale organizations.</div>
       </div>
       <div class="role-card">
+        <div class="role-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="role-name">Senior Technical Program Manager</div>
+        <div class="role-desc">End-to-end ownership of complex, cross-functional technical programs — release governance, multi-customer portfolio delivery, phased rollout methodology, risk management, stakeholder alignment, and structured delivery frameworks at enterprise scale.</div>
+      </div>
+      <div class="role-card">
         <div class="role-icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
         <div class="role-name">Enterprise Applications Leader</div>
         <div class="role-desc">Application portfolio management, SaaS governance, ERP and business systems integration, API-driven platform delivery, and enterprise technology roadmaps aligned to business outcomes.</div>
-      </div>
-      <div class="role-card">
-        <div class="role-icon green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <div class="role-name">Technical Program Manager</div>
-        <div class="role-desc">Global deployment programs, release governance, project portfolio management, stakeholder alignment, cross-functional risk mitigation, and structured delivery frameworks across concurrent initiatives.</div>
       </div>
       <div class="role-card">
         <div class="role-icon coral">
@@ -672,15 +748,15 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       </div>
       <div class="tool-group">
         <div class="tool-group-name">Enterprise Systems</div>
-        <div class="tool-list">Active Directory · Windows Server · Linux/Ubuntu · SQL Server · PowerShell · ManageEngine · ServiceNow · Jira · IIS · ITSM platforms · Endpoint management · Identity &amp; access governance</div>
+        <div class="tool-list">Active Directory · Windows Server · Linux/Ubuntu · SQL Server · PowerShell · ManageEngine · ServiceNow · Jira · ClickUp (Certified Power User) · ITSM platforms · Endpoint management · Identity &amp; access governance</div>
       </div>
       <div class="tool-group">
         <div class="tool-group-name">Data &amp; Integration</div>
-        <div class="tool-list">Snowflake · SQL Server administration · EDW pipelines · API integrations · Replicated databases · Reporting &amp; analytics · Data platform design · Loyalty platform integration</div>
+        <div class="tool-list">Snowflake · SQL Server administration · EDW pipelines · API integrations · Replicated databases · Reporting &amp; analytics · Data platform design · Loyalty platform integration · Pre-migration data validation</div>
       </div>
       <div class="tool-group">
-        <div class="tool-group-name">Governance &amp; Operations</div>
-        <div class="tool-list">PCI-DSS · SOC 2 · NIGC · AML · Change management · Release governance · Access governance · Incident management · SLA management · Vendor management · Budget oversight</div>
+        <div class="tool-group-name">Program Management &amp; Governance</div>
+        <div class="tool-list">PCI-DSS · SOC 2 · NIGC · AML · GLI/BMM regulatory compliance · Release governance · Change management · Access governance · Incident management · SLA management · Vendor management · Budget oversight · Phased rollout methodology</div>
       </div>
     </div>
   </section>
@@ -690,7 +766,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     <div class="cta-section">
       <div class="cta-left">
         <div class="cta-heading">Open to the right opportunity</div>
-        <div class="cta-sub">Targeting Director / Head of IT, Enterprise Applications, Platform Delivery, Technical Program Management, and Data Center Operations roles. Preference for Remote or Hybrid. Open to relocation to Denver / Colorado area.</div>
+        <div class="cta-sub">Targeting Senior Technical Program Manager, Director / Head of IT, Enterprise Applications, Platform Delivery, and Data Center Operations roles. Preference for Remote or Hybrid. Open to relocation to Denver / Colorado area or Washington State.</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <a href="Nick-Waller-Resume.pdf" download class="btn btn-download">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
