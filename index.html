@@ -29,12 +29,40 @@
   --coral-dim: rgba(232,112,78,0.12);
   --radius: 10px;
   --radius-sm: 6px;
+  --noise-opacity: 0.03;
+  --glow-opacity: 0.07;
+  --tint: rgba(255,255,255,0.08);
+  --tint-soft: rgba(255,255,255,0.06);
+}
+html[data-theme="light"] {
+  --bg: #f7f5f1;
+  --bg-2: #ffffff;
+  --bg-3: #efece5;
+  --bg-4: #e6e2d9;
+  --border: rgba(10,12,14,0.10);
+  --border-mid: rgba(10,12,14,0.18);
+  --text: #181511;
+  --text-2: #4a463f;
+  --text-3: #847f74;
+  --accent: #c9881f;
+  --accent-dim: rgba(201,136,31,0.12);
+  --accent-2: #2f72b8;
+  --accent-2-dim: rgba(47,114,184,0.10);
+  --green: #2d9a63;
+  --green-dim: rgba(45,154,99,0.10);
+  --coral: #cf5532;
+  --coral-dim: rgba(207,85,50,0.10);
+  --noise-opacity: 0.018;
+  --glow-opacity: 0.05;
+  --tint: rgba(10,12,14,0.05);
+  --tint-soft: rgba(10,12,14,0.04);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html.theme-transition *{transition:background-color 0.3s ease,border-color 0.3s ease,color 0.3s ease,box-shadow 0.3s ease !important;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(240,184,74,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background 0.3s ease,color 0.3s ease;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:calc(var(--noise-opacity)/0.03);}
+body::after{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(240,184,74,var(--glow-opacity)) 0%,transparent 70%);pointer-events:none;z-index:0;transition:background 0.3s ease;}
 .page-wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 32px 80px;}
 
 /* NAV */
@@ -43,6 +71,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .nav-links{display:flex;gap:24px;list-style:none;}
 .nav-links a{font-size:13px;color:var(--text-2);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text);}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:0.5px solid var(--border-mid);background:var(--bg-2);color:var(--text-2);cursor:pointer;transition:border-color 0.2s,color 0.2s,background 0.2s;flex-shrink:0;margin-left:20px;}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
+.theme-toggle svg{width:16px;height:16px;}
+.theme-toggle .icon-sun{display:none;}
+html[data-theme="light"] .theme-toggle .icon-moon{display:none;}
+html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
+.nav-right{display:flex;align-items:center;}
 
 /* HERO */
 .hero{margin-bottom:72px;opacity:0;animation:fadeUp 0.7s ease forwards;}
@@ -100,7 +135,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .bar-meta{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
 .bar-name{color:var(--text-2);}
 .bar-pct{font-family:'DM Mono',monospace;color:var(--text-3);font-size:11px;}
-.bar-track{height:5px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.bar-track{height:5px;background:var(--tint);border-radius:2px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:2px;transform-origin:left;transform:scaleX(0);transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);}
 .bar-fill.animate{transform:scaleX(1);}
 
@@ -134,13 +169,26 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0
 .sig-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;padding-left:14px;}
 .sig-ctx{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);margin-bottom:10px;padding-left:14px;letter-spacing:0.06em;}
 .sig-body{font-size:13px;color:var(--text-2);line-height:1.75;padding-left:14px;}
-.sig-metric{display:inline-block;margin-top:12px;margin-left:14px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:4px;color:var(--text-2);background:rgba(255,255,255,0.06);border:0.5px solid var(--border-mid);}
+.sig-metric{display:inline-block;margin-top:12px;margin-left:14px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:4px;color:var(--text-2);background:var(--tint-soft);border:0.5px solid var(--border-mid);}
 
-/* CASE STUDIES */
-.case-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-.case-card{background:var(--bg-2);border:0.5px solid var(--border);border-radius:var(--radius);padding:28px 30px;transition:border-color 0.2s;}
+/* CASE STUDIES CAROUSEL */
+.case-carousel{position:relative;}
+.case-viewport{overflow:hidden;border-radius:var(--radius);}
+.case-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.case-slide{flex:0 0 100%;min-width:0;padding:1px;}
+.case-card{background:var(--bg-2);border:0.5px solid var(--border);border-radius:var(--radius);padding:28px 30px;transition:border-color 0.2s;height:100%;}
 .case-card:hover{border-color:var(--border-mid);}
 .case-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
+.case-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px;}
+.case-arrow{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:0.5px solid var(--border-mid);background:var(--bg-2);color:var(--text-2);cursor:pointer;transition:border-color 0.2s,color 0.2s,background 0.2s;flex-shrink:0;}
+.case-arrow:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
+.case-arrow svg{width:16px;height:16px;}
+.case-dots{display:flex;align-items:center;gap:8px;}
+.case-dot{width:7px;height:7px;border-radius:50%;background:var(--border-mid);border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s;}
+.case-dot.active{background:var(--accent);transform:scale(1.3);}
+.case-progress-track{width:100%;height:2px;background:var(--border);border-radius:2px;margin-top:16px;overflow:hidden;}
+.case-progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.1s linear;}
+.case-progress-track.paused .case-progress-fill{background:var(--text-3);}
 .case-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);line-height:1.2;}
 .case-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:4px;}
 .case-tag.tag-gold{background:var(--accent-dim);color:var(--accent);}
@@ -233,6 +281,8 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
   .tl-item{grid-template-columns:80px 1px 1fr;gap:0 16px;}
   .sig-grid{grid-template-columns:1fr;}
   .par-row{grid-template-columns:1fr;}
+  .case-card{padding:22px 20px;}
+  .case-arrow{width:32px;height:32px;}
   .role-grid{grid-template-columns:1fr;}
   .tools-grid{grid-template-columns:1fr;}
   .cta-section{flex-direction:column;align-items:flex-start;gap:20px;}
@@ -251,13 +301,19 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
 
   <nav>
     <div class="nav-mono">NW · IT Executive Portfolio</div>
-    <ul class="nav-links">
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#casestudies">Case Studies</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#roles">Role Fit</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#casestudies">Case Studies</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#roles">Role Fit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -361,140 +417,169 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       <span class="section-mono">Selected case studies</span>
       <div class="section-line"></div>
     </div>
-    <div class="case-grid">
+    <div class="case-carousel" id="caseCarousel">
+      <div class="case-viewport">
+        <div class="case-track" id="caseTrack">
 
-      <!-- CASE 1: Release Governance -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">Global Release Governance Platform</div>
-          <div class="case-tag tag-blue">Light &amp; Wonder</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">Managing a loyalty solution across 20+ enterprise customers — each with Lab, PreProd, and Production environments — plus internal QA, Showroom, regulatory test beds, and 5 tradeshow environments created an unmanageable release coordination problem. No unified visibility into what was in each release, which tickets were patched, or which components required regulatory sign-off with GLI or BMM.</div>
+          <!-- CASE 1: Release Governance -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">Global Release Governance Platform</div>
+                <div class="case-tag tag-blue">Light &amp; Wonder</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">Managing a loyalty solution across 20+ enterprise customers — each with Lab, PreProd, and Production environments — plus internal QA, Showroom, regulatory test beds, and 5 tradeshow environments created an unmanageable release coordination problem. No unified visibility into what was in each release, which tickets were patched, or which components required regulatory sign-off with GLI or BMM.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Designed and implemented a custom release management platform to track all code branches, associated database objects, patched tickets, and deployment status across every environment simultaneously. Built GLI regulatory flagging directly into the release workflow. Managed the full program portfolio in ClickUp as a certified Power User, with dedicated spaces per customer property tracking go-lives, upgrades, and installs.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Established a single source of truth for release state across 20+ customers and dozens of environments. Deployment risk dropped significantly, regulatory compliance checkpoints were systematically enforced, and the platform scaled to support all subsequent customer onboardings without additional process overhead.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Designed and implemented a custom release management platform to track all code branches, associated database objects, patched tickets, and deployment status across every environment simultaneously. Built GLI regulatory flagging directly into the release workflow. Managed the full program portfolio in ClickUp as a certified Power User, with dedicated spaces per customer property tracking go-lives, upgrades, and installs.</div>
+
+          <!-- CASE 2: Support Transformation -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">Enterprise Support Transformation</div>
+                <div class="case-tag tag-gold">Seminole Hard Rock Support Services</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">Ticket response times were inconsistent and SLA accountability was unclear across a globally distributed support function spanning 13 casino properties, 25 hotels, and 180+ locations. Escalation paths were informal and resolution metrics were not visible to leadership.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Built SLA governance framework, deployed ServiceNow dashboards for real-time visibility, formalized escalation workflows, and established ownership accountability at the manager level across all regions and properties.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Achieved an 80% improvement in response and resolution times within 60 days. Leadership gained live operational visibility and managers had clear accountability structures for the first time across the enterprise portfolio.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Established a single source of truth for release state across 20+ customers and dozens of environments. Deployment risk dropped significantly, regulatory compliance checkpoints were systematically enforced, and the platform scaled to support all subsequent customer onboardings without additional process overhead.</div>
+
+          <!-- CASE 3: Multi-property Gaming Platform Rollout -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">Enterprise Gaming Platform Upgrade Program</div>
+                <div class="case-tag tag-gold">Seminole Hard Rock Support Services</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">Upgrading gaming applications across 13 casino properties simultaneously carried significant risk — adverse effects to the gaming floor or system outages translated directly to revenue loss. A failed upgrade with no recovery path was not an acceptable outcome in a 24/7 regulated environment.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Designed a phased rollout program using the 6 Florida properties as a controlled pilot group — geographically concentrated for rapid on-site support if needed. After all 6 properties signed off, the enterprise rollout was scheduled across all remaining properties in coordination with their Gaming Systems teams. Built rigorous rollback procedures into every upgrade, including both database and binary folder backups for each affected application prior to any production deployment. All changes were vigorously validated in QA before promotion to production.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Delivered enterprise-wide gaming platform upgrades across all 13 properties with zero unplanned outages. The phased pilot model became the standard upgrade methodology, giving stakeholders confidence in the process and providing a proven rollback path that protected revenue and regulatory continuity at every property.</div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- CASE 4: Player Database Migration Tooling -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">Player Database Pre-Migration Validation Tool</div>
+                <div class="case-tag tag-blue">Light &amp; Wonder</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">Legacy casino player management systems accumulated years of unvalidated "dirty data" — free-text fields where users had entered values like invalid state names, malformed phone numbers, and non-standard addresses. These failures were not discovered until migration was underway, causing go-live delays, failed records, and costly rework across every customer onboarding.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Led the design and development of a pre-migration data comparison tool that analyzed all distinct field values in the source database against valid mapped values in the target system. The tool generated an Excel output flagging every unique value with no valid mapping — giving the team and the customer a complete data quality picture before a single record was touched. Customers were presented three options: remediate the data themselves, have the team remediate it, or accept failures for records deemed non-critical.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Transformed data migration from a reactive, failure-driven process into a structured, customer-facing data quality program. Go-live risk dropped significantly, customer expectations were properly set before migration began, and the tool became standard pre-migration practice across all subsequent platform deployments in the customer portfolio.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASE 5: IPTV / OpEx Reduction -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">IPTV Platform Migration and OpEx Reduction</div>
+                <div class="case-tag tag-green">Hard Rock Sacramento</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">The property launched with a commercial IPTV and video matrix solution requiring a dedicated set-top box on every screen. With hundreds of screens across the property, hardware replacement costs of approximately $600 per unit combined with expensive per-unit annual licensing made the solution financially unsustainable as an ongoing operational expense.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Evaluated the existing solution against alternatives and proposed migrating to TriplePlay TV — a software-based IPTV platform that eliminated the set-top box requirement entirely by leveraging the onboard chipset built into the property's existing Samsung commercial displays. Managed the full vendor transition, negotiated a new MSA with significantly reduced per-unit licensing terms, and oversaw deployment across all screens property-wide.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Eliminated ongoing hardware replacement costs and reduced per-unit licensing spend across hundreds of screens, contributing directly to reducing property OpEx from $2.5M to $1.8M. The property gained expanded marketing content customization capabilities and removed the hardware dependency that had constrained the original solution.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASE 6: Greenfield Buildout -->
+          <div class="case-slide">
+            <div class="case-card">
+              <div class="case-header">
+                <div class="case-title">Greenfield Resort Technology Buildout</div>
+                <div class="case-tag tag-green">Hard Rock Sacramento</div>
+              </div>
+              <div class="par-row">
+                <div class="par-block">
+                  <div class="par-label lbl-problem">Problem</div>
+                  <div class="par-text">A 300,000 sq ft gaming and hospitality property needed full technology infrastructure built from ground zero — including network, servers, storage, endpoints, AV, and all production systems — in a compressed timeline before opening.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-action">Action</div>
+                  <div class="par-text">Led end-to-end infrastructure delivery: MDF/IDF design, network architecture, server and storage provisioning, endpoint deployment, AV systems programming, and vendor coordination across all technology domains. Managed production readiness and go-live sequencing across the casino floor, hotel tower, Hard Rock Live concert venue, and Rocktane gas station with integrated loyalty payment systems.</div>
+                </div>
+                <div class="par-block">
+                  <div class="par-label lbl-result">Result</div>
+                  <div class="par-text">Delivered the full technology buildout in six months, on time and within scope. The execution model became the franchise template for subsequent Hard Rock property openings, extending the impact beyond the single property across the brand.<br><br>Following the Phase 1 opening, led delivery of three additional property expansion phases: <strong>Phase 2</strong> — a Rocktane gas station with fully integrated loyalty payment systems; <strong>Phase 3</strong> — administrative office buildout including new Tribal Agency offices; and <strong>Phase 4</strong> — Hard Rock Live, a 5,000+ capacity state-of-the-art concert and live entertainment venue. Each phase was delivered as an integrated technology program, extending the infrastructure and systems foundation established at opening.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- CASE 2: Support Transformation -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">Enterprise Support Transformation</div>
-          <div class="case-tag tag-gold">Seminole Hard Rock Support Services</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">Ticket response times were inconsistent and SLA accountability was unclear across a globally distributed support function spanning 13 casino properties, 25 hotels, and 180+ locations. Escalation paths were informal and resolution metrics were not visible to leadership.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Built SLA governance framework, deployed ServiceNow dashboards for real-time visibility, formalized escalation workflows, and established ownership accountability at the manager level across all regions and properties.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Achieved an 80% improvement in response and resolution times within 60 days. Leadership gained live operational visibility and managers had clear accountability structures for the first time across the enterprise portfolio.</div>
-          </div>
-        </div>
+      <div class="case-nav">
+        <button class="case-arrow" id="casePrev" aria-label="Previous case study">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="case-dots" id="caseDots"></div>
+        <button class="case-arrow" id="caseNext" aria-label="Next case study">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
-
-      <!-- CASE 3: Multi-property Gaming Platform Rollout -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">Enterprise Gaming Platform Upgrade Program</div>
-          <div class="case-tag tag-gold">Seminole Hard Rock Support Services</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">Upgrading gaming applications across 13 casino properties simultaneously carried significant risk — adverse effects to the gaming floor or system outages translated directly to revenue loss. A failed upgrade with no recovery path was not an acceptable outcome in a 24/7 regulated environment.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Designed a phased rollout program using the 6 Florida properties as a controlled pilot group — geographically concentrated for rapid on-site support if needed. After all 6 properties signed off, the enterprise rollout was scheduled across all remaining properties in coordination with their Gaming Systems teams. Built rigorous rollback procedures into every upgrade, including both database and binary folder backups for each affected application prior to any production deployment. All changes were vigorously validated in QA before promotion to production.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Delivered enterprise-wide gaming platform upgrades across all 13 properties with zero unplanned outages. The phased pilot model became the standard upgrade methodology, giving stakeholders confidence in the process and providing a proven rollback path that protected revenue and regulatory continuity at every property.</div>
-          </div>
-        </div>
+      <div class="case-progress-track" id="caseProgressTrack">
+        <div class="case-progress-fill" id="caseProgressFill"></div>
       </div>
-
-      <!-- CASE 4: Player Database Migration Tooling -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">Player Database Pre-Migration Validation Tool</div>
-          <div class="case-tag tag-blue">Light &amp; Wonder</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">Legacy casino player management systems accumulated years of unvalidated "dirty data" — free-text fields where users had entered values like invalid state names, malformed phone numbers, and non-standard addresses. These failures were not discovered until migration was underway, causing go-live delays, failed records, and costly rework across every customer onboarding.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Led the design and development of a pre-migration data comparison tool that analyzed all distinct field values in the source database against valid mapped values in the target system. The tool generated an Excel output flagging every unique value with no valid mapping — giving the team and the customer a complete data quality picture before a single record was touched. Customers were presented three options: remediate the data themselves, have the team remediate it, or accept failures for records deemed non-critical.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Transformed data migration from a reactive, failure-driven process into a structured, customer-facing data quality program. Go-live risk dropped significantly, customer expectations were properly set before migration began, and the tool became standard pre-migration practice across all subsequent platform deployments in the customer portfolio.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CASE 5: IPTV / OpEx Reduction -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">IPTV Platform Migration and OpEx Reduction</div>
-          <div class="case-tag tag-green">Hard Rock Sacramento</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">The property launched with a commercial IPTV and video matrix solution requiring a dedicated set-top box on every screen. With hundreds of screens across the property, hardware replacement costs of approximately $600 per unit combined with expensive per-unit annual licensing made the solution financially unsustainable as an ongoing operational expense.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Evaluated the existing solution against alternatives and proposed migrating to TriplePlay TV — a software-based IPTV platform that eliminated the set-top box requirement entirely by leveraging the onboard chipset built into the property's existing Samsung commercial displays. Managed the full vendor transition, negotiated a new MSA with significantly reduced per-unit licensing terms, and oversaw deployment across all screens property-wide.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Eliminated ongoing hardware replacement costs and reduced per-unit licensing spend across hundreds of screens, contributing directly to reducing property OpEx from $2.5M to $1.8M. The property gained expanded marketing content customization capabilities and removed the hardware dependency that had constrained the original solution.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CASE 6: Greenfield Buildout -->
-      <div class="case-card">
-        <div class="case-header">
-          <div class="case-title">Greenfield Resort Technology Buildout</div>
-          <div class="case-tag tag-green">Hard Rock Sacramento</div>
-        </div>
-        <div class="par-row">
-          <div class="par-block">
-            <div class="par-label lbl-problem">Problem</div>
-            <div class="par-text">A 300,000 sq ft gaming and hospitality property needed full technology infrastructure built from ground zero — including network, servers, storage, endpoints, AV, and all production systems — in a compressed timeline before opening.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-action">Action</div>
-            <div class="par-text">Led end-to-end infrastructure delivery: MDF/IDF design, network architecture, server and storage provisioning, endpoint deployment, AV systems programming, and vendor coordination across all technology domains. Managed production readiness and go-live sequencing across the casino floor, hotel tower, Hard Rock Live concert venue, and Rocktane gas station with integrated loyalty payment systems.</div>
-          </div>
-          <div class="par-block">
-            <div class="par-label lbl-result">Result</div>
-            <div class="par-text">Delivered the full technology buildout in six months, on time and within scope. The execution model became the franchise template for subsequent Hard Rock property openings, extending the impact beyond the single property across the brand.</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -541,30 +626,30 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         </div>
       </div>
       <div class="panel">
-        <div class="panel-title">Domain depth</div>
+        <div class="panel-title">Domain depth · years of experience</div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Technical program management</span><span class="bar-pct">90%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:90%;background:#5ba3e8;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Infrastructure &amp; data center ops</span><span class="bar-pct">9+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#a0a09a;"></div></div>
         </div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Platform delivery</span><span class="bar-pct">90%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:90%;background:#5ba3e8;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Data infrastructure</span><span class="bar-pct">9+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#52cc8a;"></div></div>
         </div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Compliance (PCI-DSS, SOC 2, AML)</span><span class="bar-pct">85%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:85%;background:#e8704e;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Compliance (PCI-DSS, SOC 2, AML)</span><span class="bar-pct">9+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#e8704e;"></div></div>
         </div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Data infrastructure</span><span class="bar-pct">80%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:80%;background:#52cc8a;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Technical program management</span><span class="bar-pct">6+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:67%;background:#5ba3e8;"></div></div>
         </div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Team development &amp; hiring</span><span class="bar-pct">80%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:80%;background:#f0b84a;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Platform delivery</span><span class="bar-pct">6+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:67%;background:#5ba3e8;"></div></div>
         </div>
         <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Infrastructure &amp; data center ops</span><span class="bar-pct">75%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:75%;background:#a0a09a;"></div></div>
+          <div class="bar-meta"><span class="bar-name">Team development &amp; hiring</span><span class="bar-pct">6+ yrs</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:67%;background:#f0b84a;"></div></div>
         </div>
       </div>
     </div>
@@ -610,7 +695,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
         <div>
           <div class="tl-company">Hard Rock Hotel &amp; Casino Sacramento</div>
           <div class="tl-role">IT Operations Manager / Senior Systems Administrator</div>
-          <div class="tl-body">Delivered a greenfield 300,000 sq ft casino technology buildout from the ground up in six months — the execution model became the franchise template for future Hard Rock property openings. Reduced OpEx from $2.5M to $1.8M through vendor optimization including IPTV platform migration to TriplePlay TV. Negotiated dual-carrier fiber infrastructure to eliminate single points of failure.</div>
+          <div class="tl-body">Delivered a greenfield 300,000 sq ft casino technology buildout from the ground up in six months — the execution model became the franchise template for future Hard Rock property openings. Continued as program lead through three additional phases of property expansion: Phase 2 (Rocktane gas station with loyalty integration), Phase 3 (admin offices and new Tribal Agency offices), and Phase 4 (Hard Rock Live — a 5,000+ capacity concert and live entertainment venue). Reduced OpEx from $2.5M to $1.8M through vendor optimization including IPTV platform migration to TriplePlay TV. Negotiated dual-carrier fiber infrastructure to eliminate single points of failure.</div>
         </div>
       </li>
       <li class="tl-item">
@@ -649,8 +734,8 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
       <div class="sig-card accent-gold">
         <div class="sig-title">Greenfield casino technology buildout</div>
         <div class="sig-ctx">Hard Rock Sacramento · 2019–2020</div>
-        <div class="sig-body">Delivered full technology infrastructure for a 300,000 sq ft property from zero in six months — on time and within scope. The execution model became the franchise standard for subsequent Hard Rock openings, multiplying the impact beyond the single property.</div>
-        <div class="sig-metric">300k sq ft · 6-month delivery · franchise template</div>
+        <div class="sig-body">Delivered full technology infrastructure for a 300,000 sq ft property from zero in six months — on time and within scope. Led all four phases of property expansion through Hard Rock Live, a 5,000+ capacity concert venue. The execution model became the franchise standard for subsequent Hard Rock openings, multiplying the impact beyond the single property.</div>
+        <div class="sig-metric">300k sq ft · 6-month delivery · 4-phase expansion · franchise template</div>
       </div>
       <div class="sig-card accent-blue">
         <div class="sig-title">Role-permission onboarding matrix</div>
@@ -799,6 +884,16 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
 </div>
 
 <script>
+  // Apply saved/system theme before paint to avoid flash
+  (function(){
+    try {
+      const saved = localStorage.getItem('nw-theme');
+      const theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e) {}
+  })();
+</script>
+<script>
   const bars = document.querySelectorAll('.bar-fill');
   const tlItems = document.querySelectorAll('.tl-item');
   const observer = new IntersectionObserver((entries) => {
@@ -816,6 +911,89 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     bars.forEach(b => { if (b.getBoundingClientRect().top < window.innerHeight) b.classList.add('animate'); });
     tlItems.forEach(t => { if (t.getBoundingClientRect().top < window.innerHeight) t.classList.add('visible'); });
   }, 200);
+
+  // THEME TOGGLE
+  (function(){
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', () => {
+      root.classList.add('theme-transition');
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+        try { localStorage.setItem('nw-theme', 'dark'); } catch(e) {}
+      } else {
+        root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('nw-theme', 'light'); } catch(e) {}
+      }
+      setTimeout(() => root.classList.remove('theme-transition'), 350);
+    });
+  })();
+
+  // CASE STUDY CAROUSEL
+  (function(){
+    const carousel = document.getElementById('caseCarousel');
+    const track = document.getElementById('caseTrack');
+    const slides = Array.from(track.children);
+    const prevBtn = document.getElementById('casePrev');
+    const nextBtn = document.getElementById('caseNext');
+    const dotsWrap = document.getElementById('caseDots');
+    const progressTrack = document.getElementById('caseProgressTrack');
+    const progressFill = document.getElementById('caseProgressFill');
+
+    const ROTATE_MS = 60000; // 60 seconds
+    const TICK_MS = 100;
+    let current = 0;
+    let elapsed = 0;
+    let isHovered = false;
+    let tickHandle = null;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'case-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to case study ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i, true));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function render() {
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function goTo(index, manual) {
+      current = (index + slides.length) % slides.length;
+      elapsed = 0;
+      progressFill.style.width = '0%';
+      render();
+    }
+
+    function next(manual) { goTo(current + 1, manual); }
+    function prev(manual) { goTo(current - 1, manual); }
+
+    prevBtn.addEventListener('click', () => prev(true));
+    nextBtn.addEventListener('click', () => next(true));
+
+    carousel.addEventListener('mouseenter', () => { isHovered = true; progressTrack.classList.add('paused'); });
+    carousel.addEventListener('mouseleave', () => { isHovered = false; progressTrack.classList.remove('paused'); });
+
+    function tick() {
+      if (!isHovered) {
+        elapsed += TICK_MS;
+        const pct = Math.min(100, (elapsed / ROTATE_MS) * 100);
+        progressFill.style.width = pct + '%';
+        if (elapsed >= ROTATE_MS) {
+          next(false);
+        }
+      }
+    }
+
+    tickHandle = setInterval(tick, TICK_MS);
+    render();
+  })();
 </script>
 
 </body>
