@@ -171,6 +171,16 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .sig-body{font-size:13px;color:var(--text-2);line-height:1.75;padding-left:14px;}
 .sig-metric{display:inline-block;margin-top:12px;margin-left:14px;font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:4px;color:var(--text-2);background:var(--tint-soft);border:0.5px solid var(--border-mid);}
 
+/* AI ENGINEERING PROJECT CARDS */
+.ai-intro{font-size:14px;color:var(--text-2);line-height:1.8;max-width:700px;margin-bottom:28px;}
+.ai-intro a{color:var(--accent);text-decoration:none;border-bottom:0.5px solid currentColor;}
+.ai-intro a:hover{opacity:0.8;}
+.ai-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-left:14px;}
+.ai-tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 9px;border-radius:4px;background:var(--tint-soft);color:var(--text-2);border:0.5px solid var(--border-mid);}
+.ai-card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;margin-left:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-2);text-decoration:none;padding:7px 14px;border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);transition:border-color 0.2s,color 0.2s,background 0.2s;}
+.ai-card-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
+.ai-card-link svg{width:13px;height:13px;}
+
 /* CASE STUDIES CAROUSEL */
 .case-carousel{position:relative;}
 .case-viewport{overflow:hidden;border-radius:var(--radius);}
@@ -304,6 +314,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#ai-engineering">AI Engineering</a></li>
         <li><a href="#casestudies">Case Studies</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#roles">Role Fit</a></li>
@@ -758,6 +769,102 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     </div>
   </section>
 
+  <!-- AI ENGINEERING -->
+  <section class="section" id="ai-engineering">
+    <div class="section-header">
+      <span class="section-mono">AI engineering · applied projects</span>
+      <div class="section-line"></div>
+    </div>
+    <p class="ai-intro">A self-directed engineering practice in applied AI — agentic loops, structured tool use, retrieval-augmented generation, and multi-agent orchestration, built directly against real IT operations problems rather than tutorial datasets. All code is public on <a href="https://github.com/ImNorcal247" target="_blank" rel="noopener">GitHub</a>.</p>
+    <div class="kpi-grid" style="margin-bottom:14px;">
+      <div class="kpi-card">
+        <div class="kpi-val">4</div>
+        <div class="kpi-sub">public repositories, fully documented</div>
+        <div class="kpi-badge">github.com/ImNorcal247</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">2</div>
+        <div class="kpi-sub">live API integrations in production logic</div>
+        <div class="kpi-badge">ClickUp · ServiceNow</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">2</div>
+        <div class="kpi-sub">distinct agentic architectures, deliberately contrasted</div>
+        <div class="kpi-badge">autonomous vs. deterministic</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val">1</div>
+        <div class="kpi-sub">real bug found and fixed via adversarial testing</div>
+        <div class="kpi-badge">duplicate-detection loop</div>
+      </div>
+    </div>
+    <div class="sig-grid">
+      <div class="sig-card accent-blue">
+        <div class="sig-title">IT Policy Q&amp;A Bot</div>
+        <div class="sig-ctx">Retrieval-augmented generation</div>
+        <div class="sig-body">A RAG pipeline that answers IT policy questions grounded in source documents rather than model memory. Uses a ChromaDB vector store with an overlapping chunking strategy to preserve context across chunk boundaries, returns source attribution alongside every answer, and gates low-confidence retrievals instead of guessing — the system says "I don't know" rather than hallucinating a policy that doesn't exist.</div>
+        <div class="ai-tags">
+          <span class="ai-tag">Python</span>
+          <span class="ai-tag">ChromaDB</span>
+          <span class="ai-tag">RAG</span>
+          <span class="ai-tag">Embeddings</span>
+        </div>
+        <a class="ai-card-link" href="https://github.com/ImNorcal247/it-policy-qa-bot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="sig-card accent-coral">
+        <div class="sig-title">IT Incident Classifier</div>
+        <div class="sig-ctx">Structured output &amp; few-shot prompting</div>
+        <div class="sig-body">Classifies raw incident reports into structured categories using few-shot prompting and forced JSON-schema output. Includes a defensive parsing layer that validates every model response before it touches downstream logic — malformed or unexpected output is caught and handled explicitly rather than silently breaking the pipeline.</div>
+        <div class="ai-tags">
+          <span class="ai-tag">Python</span>
+          <span class="ai-tag">Few-shot prompting</span>
+          <span class="ai-tag">JSON schema</span>
+          <span class="ai-tag">Validation</span>
+        </div>
+        <a class="ai-card-link" href="https://github.com/ImNorcal247/it-incident-classifier" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="sig-card accent-green">
+        <div class="sig-title">IT Ticket Dashboard</div>
+        <div class="sig-ctx">Multi-entity data consolidation</div>
+        <div class="sig-body">An interactive Streamlit dashboard built around a multi-entity M&amp;A scenario — consolidating ticket data across systems that don't share a common schema. Uses cascading filters and Plotly visualizations to give a single operational view across previously fragmented data sources, the kind of reporting gap that shows up immediately after any acquisition or system migration.</div>
+        <div class="ai-tags">
+          <span class="ai-tag">Python</span>
+          <span class="ai-tag">Streamlit</span>
+          <span class="ai-tag">Plotly</span>
+          <span class="ai-tag">Data consolidation</span>
+        </div>
+        <a class="ai-card-link" href="https://github.com/ImNorcal247/IT-Ticket-Dashboard" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="sig-card accent-gold">
+        <div class="sig-title">IT Ticket Orchestrator</div>
+        <div class="sig-ctx">Multi-agent pipeline · live production integration</div>
+        <div class="sig-body">A four-stage agent pipeline — triage, duplicate detection, assignment routing, and ticket creation — that writes fully classified tickets directly into ClickUp or ServiceNow via their real APIs. Every stage uses forced single-tool calls for guaranteed structured output, with field-level mapping tables so the model never improvises a priority code or routing decision. The duplicate-check stage queries live system state on every run, after an adversarial stress test surfaced and led to fixing a real bug where stale mock data let duplicate tickets slip through.</div>
+        <div class="ai-tags">
+          <span class="ai-tag">Python</span>
+          <span class="ai-tag">Multi-agent orchestration</span>
+          <span class="ai-tag">ClickUp API</span>
+          <span class="ai-tag">ServiceNow API</span>
+        </div>
+        <a class="ai-card-link" href="https://github.com/ImNorcal247/IT-Ticket-Orchestrator" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ROLE ALIGNMENT -->
   <section class="section" id="roles">
     <div class="section-header">
@@ -874,6 +981,7 @@ footer{padding:32px 0 0;border-top:0.5px solid var(--border);display:flex;justif
     <div class="footer-name">Nick Waller · IT Executive Portfolio · 2026</div>
     <div class="footer-links">
       <a href="#leadership">Leadership</a>
+      <a href="#ai-engineering">AI Engineering</a>
       <a href="#casestudies">Case Studies</a>
       <a href="#experience">Experience</a>
       <a href="#roles">Role Fit</a>
